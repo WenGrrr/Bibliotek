@@ -13,11 +13,13 @@
         <div th:inline="text" class="col-md-2">Цена: [[${product.price}]] $</div>
         <div th:inline="text" class="col-md-9">В наличии: [[${product.count}]]</div>
         <div>
-            <input type="number" value="1" maxlength="${product.count}" minlength="1">
+
         </div>
-        <a th:href="@{'/shoppingCart/addProduct/{id}'(id=${product.id})}" class="col-md-1">
-            <button type="button" class="btn btn-primary" >Добавить в корзину</button>
-        </a>
+        <form action="#" th:action="@{'/shoppingCart/addProduct/{id}'(id=${product.id})}">
+                <input type="number" value="1" maxlength="${product.count}" name ="counter" minlength="1">
+                <button type="button" class="btn btn-primary" >Добавить в корзину</button>
+        </form>
+
     </div>
 <div>
     <h4>Удалить товар</h4>

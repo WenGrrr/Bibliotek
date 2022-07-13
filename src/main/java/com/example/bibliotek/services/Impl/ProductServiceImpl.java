@@ -1,7 +1,8 @@
-package com.example.bibliotek.services;
+package com.example.bibliotek.services.Impl;
 
 import com.example.bibliotek.documents.Product;
 import com.example.bibliotek.repositories.ProductRepository;
+import com.example.bibliotek.services.ProductsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,7 +10,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Service
-public class ProductServiceImpl implements ProductsService{
+public class ProductServiceImpl implements ProductsService {
 
     @Autowired
     private ProductRepository productRepository;

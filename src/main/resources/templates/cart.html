@@ -8,6 +8,7 @@
 <body>
 <div>
   <p th:text="${cart.id}" />
+    <div th:insert="~{products :: ${products}}"></div>
 </div>
 </body>
 </html>

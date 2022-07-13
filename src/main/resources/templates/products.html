@@ -48,7 +48,7 @@
         <div>
           <div>
             <form action="#" th:action="@{'/cart/add/{productId}' (productId = ${product.id})}" method="post">
-
+              <span th:value ="${product.price}"></span>
               <input type="submit" value="Добавить в корзину" />
             </form>
           </div>

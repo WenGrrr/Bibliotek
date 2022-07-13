@@ -1,7 +1,6 @@
 package com.example.bibliotek.controllers;
 
-import com.example.bibliotek.documents.Product;
-import com.example.bibliotek.documents.ProductCart;
+import com.example.bibliotek.documents.ShopCart;
 import com.example.bibliotek.services.ProductCartService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,8 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 @Controller
@@ -24,8 +21,8 @@ public class ProductCartController {
 
     @GetMapping("/cart")
     public String Controller(Model model){
-        ProductCart productCart = productCartService.setProductCart();
-        model.addAttribute("cart",productCart);
+        ShopCart shopCart = productCartService.setProductCart();
+        model.addAttribute("cart", shopCart);
         return "cart";
     }
 

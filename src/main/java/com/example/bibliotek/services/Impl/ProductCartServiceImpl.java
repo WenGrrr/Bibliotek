@@ -1,44 +1,45 @@
-package com.example.bibliotek.services;
+package com.example.bibliotek.services.Impl;
 
 import com.example.bibliotek.documents.Product;
-import com.example.bibliotek.documents.ProductCart;
-import com.example.bibliotek.repositories.ProductCartRepository;
+import com.example.bibliotek.documents.ShopCart;
+import com.example.bibliotek.repositories.ShopCartRepository;
 import com.example.bibliotek.repositories.ProductRepository;
+import com.example.bibliotek.services.ProductCartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.*;
 @Service
-public class ProductCartServiceImpl implements ProductCartService{
+public class ProductCartServiceImpl implements ProductCartService {
     @Autowired
-    private ProductCartRepository productCartRepository;
+    private ShopCartRepository shopCartRepository;
     @Autowired
     public ProductRepository productRepository;
 
-    public ProductCartServiceImpl(ProductCartRepository productCartRepository, ProductRepository productRepository) {
-        this.productCartRepository = productCartRepository;
+    public ProductCartServiceImpl(ShopCartRepository shopCartRepository, ProductRepository productRepository) {
+        this.shopCartRepository = shopCartRepository;
         this.productRepository = productRepository;
     }
     @Override
     public void addProductToCart(UUID productId, int i, UUID cartId){
         for (int j = 0; j < i; j++) {
-            productCartRepository.findById(cartId).get().addProduct(productRepository.findById(productId).get());
+            shopCartRepository.findById(cartId).get().addProduct(productRepository.findById(productId).get());
         }
     }
 
     @Override
-    public ProductCart getProductCart(UUID uuid) {
-        return productCartRepository.findById(uuid).get();
+    public ShopCart getProductCart(UUID uuid) {
+        return shopCartRepository.findById(uuid).get();
     }
 
     @Override
-    public ProductCart setProductCart() {
-        ProductCart productCart = new ProductCart();
-        productCart.getProducts();
-        productCart.setId(UUID.randomUUID());
-        productCart.setDate(LocalDateTime.now());
-        return productCart;
+    public ShopCart setProductCart() {
+        ShopCart shopCart = new ShopCart();
+        shopCart.getProducts();
+        shopCart.setId(UUID.randomUUID());
+        shopCart.setDate(LocalDateTime.now());
+        return shopCart;
     }
     @Override
     public void deleteProductInCart(UUID productId, UUID cartId){
@@ -52,7 +53,7 @@ public class ProductCartServiceImpl implements ProductCartService{
 
     @Override
     public Set<Product> getAllProductCart(UUID uuid){
-        return productCartRepository.findById(uuid).get().getProducts();
+        return shopCartRepository.findById(uuid).get().getProducts();
     }
     @Override
     public double getFullPrice(UUID uuid){

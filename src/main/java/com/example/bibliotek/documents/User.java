@@ -4,6 +4,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.DocumentReference;
 
+import java.util.List;
 import java.util.UUID;
 
 @Document("users")
@@ -14,9 +15,10 @@ public class User {
     private String email;
     private String lastName;
     private String firstName;
-
     @DocumentReference
-    private Shop shop;
+    private ShopCart shoppingCart;
+    @DocumentReference
+    private List<Order> orderList;
 
     public UUID getId() {
         return id;
@@ -50,18 +52,19 @@ public class User {
         this.firstName = firstName;
     }
 
-    public Shop getShop() { return shop; }
+    public ShopCart getShoppingCart() {
+        return shoppingCart;
+    }
 
-    public void setShop(Shop shop) { this.shop = shop; }
+    public void setShoppingCart(ShopCart shoppingCart) {
+        this.shoppingCart = shoppingCart;
+    }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", email='" + email + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", shop=" + shop +
-                '}';
+    public List<Order> getOrderList() {
+        return orderList;
+    }
+
+    public void setOrderList(List<Order> orderList) {
+        this.orderList = orderList;
     }
 }

@@ -21,8 +21,8 @@ public class ProductsController {
         this.productService = productService;
     }
 
-    @GetMapping("/")
-    public String Controller(Model model){
+    @GetMapping("/products")
+    public String productsController(Model model){
         List<Product> products = new ArrayList<>(productService.getAllProducts());
         model.addAttribute("products", products);
         return "products";

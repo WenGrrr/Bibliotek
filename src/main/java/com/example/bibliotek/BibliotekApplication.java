@@ -2,8 +2,6 @@ package com.example.bibliotek;
 
 import com.example.bibliotek.documents.*;
 import com.example.bibliotek.repositories.*;
-import com.example.bibliotek.services.ProductCartServiceImpl;
-import com.example.bibliotek.services.ProductServiceImpl;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -24,7 +22,7 @@ public class BibliotekApplication {
 										ProductRepository productRepository,
 										ManufacturerRepository manufacturerRepository,
 										ShopRepository shopRepository,
-										ProductCartRepository productCartRepository) {
+										ShopCartRepository shopCartRepository) {
 		return args -> {
 
 			User test = new User();
