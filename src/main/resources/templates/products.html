@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+  <title>Based bibliotek</title>
+  <h1>Based bibliotek</h1>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<!--<div>-->
+<!--  <p th:text="${cartId}}" />-->
+<!--</div>-->
+<div>
+  <h4>Создать новый товар</h4>
+  <form th:action="@{'/create'}" method="post">
+    <p>Название товара:</p> <input type = "text" name ="name"/>
+    <p>Цена товара:</p> <input type="text" name="price"/>
+    <p>кол-во товара:</p> <input type="number" name="count"/>
+    <div>
+      <input type="submit" value="Добавить товар"/>
+    </div>
+  </form>
+</div>
+<div>
+  <h4>Удалить все товары</h4>
+  <form th:action="@{'/clear'}" method="post">
+    <input type="submit" value="Удалить все товары">
+  </form>
+</div>
+<div>
+  <tr th:if="${products.empty}">
+    <td colspan="2"> Товары отсутствуют! </td>
+  </tr>
+  <tr th:each="product : ${products}">
+    <td>
+      <div>
+        <div>
+          <p>Название: <a th:href = "@{'/product/{id}' (id=${product.id})}"><b><span th:text="${product.name}"> </span></b></a></p>
+        </div>
+        <div>
+          <div th:switch="${product.price} != null">
+            <p th:case="${true}">Цена: <span th:text="${product.price}"></span></p>
+            <p th:case="${false}">Цена отсутствует.</p>
+          </div>
+        </div>
+        <div>
+          <input type="number" value="1" maxlength="${product.count}" minlength="1">
+        </div>
+        <div>
+          <div>
+            <form action="#" th:action="@{'/cart/add/{productId}' (productId = ${product.id})}" method="post">
+
+              <input type="submit" value="Добавить в корзину" />
+            </form>
+          </div>
+          <div>
+            <form action="#" th:action="@{/cart/delete}" method="get">
+
+              <input type="submit" value="Удалить из корзины" />
+            </form>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</div>
+</body>
+</html>
