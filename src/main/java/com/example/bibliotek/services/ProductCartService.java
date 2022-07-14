@@ -8,10 +8,5 @@ import java.util.UUID;
 
 public interface ProductCartService {
 
-    void addProductToCart(UUID productId, int i, UUID cartId);
-    ShopCart getProductCart(UUID uuid);
-    ShopCart setProductCart();
-    void deleteProductInCart(UUID productId,UUID cartId);
-    Set<Product> getAllProductCart(UUID uuid);
-    double getFullPrice(UUID uuid);
+    ShopCart updateShoppingCart(ShopCart shopCart);
 }

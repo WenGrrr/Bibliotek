@@ -13,4 +13,5 @@ public interface ProductsService {
     void createProduct(Product product);
     void deleteProduct(UUID uuid);
     void clearProducts();
+
 }
