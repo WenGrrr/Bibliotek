@@ -10,5 +10,5 @@ import java.util.UUID;
 
 public interface CartItemRepository extends MongoRepository<CartItem, UUID> {
     List<CartItem> findByShopCart(ShopCart shopCart);
-    List<CartItem> findByOrder(Order order)
+    List<CartItem> findByOrder(Order order);
 }

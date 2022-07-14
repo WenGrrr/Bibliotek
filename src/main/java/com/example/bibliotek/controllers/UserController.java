@@ -22,8 +22,6 @@ public class UserController {
     @GetMapping("/")
     public String productsController(Model model, Principal principal){
         List<Product> products = new ArrayList<>(productService.getAllProducts());
-        userService.
-        productCartService.
         model.addAttribute("products", products);
         return "products";
     }

@@ -6,6 +6,7 @@ import org.springframework.data.mongodb.core.mapping.DocumentReference;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * Таблица корзины
@@ -13,18 +14,18 @@ import java.util.List;
 @Document("productCart")
 public class ShopCart {
     @Id
-    private Long id;
+    private UUID id;
     private BigDecimal GrandTotal;
     @DocumentReference
     private List<CartItem> cartItemList;
     @DocumentReference
     private User user;
 
-    public Long getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 

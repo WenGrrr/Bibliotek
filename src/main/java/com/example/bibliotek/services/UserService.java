@@ -12,7 +12,7 @@ public interface UserService {
 
     User findByEmail (String email);
 
-    User findById(Long id);
+    User findById(UUID id);
 
     User createUser(User user) throws Exception;
 

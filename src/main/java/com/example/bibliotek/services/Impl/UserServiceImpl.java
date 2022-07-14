@@ -20,20 +20,6 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User getUser(UUID id) {
-        return userRepository.findById(id).get();
-    }
-
-    @Override
-    public void setUser(String firstName,String lastName, String email) {
-        User user = new User();
-        user.setId(UUID.randomUUID());
-        user.setFirstName(firstName);
-        user.setLastName(lastName);
-        user.setEmail(email);
-    }
-
-    @Override
     public User findByUsername(String username) {
         return null;
     }
@@ -44,7 +30,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User findById(Long id) {
+    public User findById(UUID id) {
         return null;
     }
 
